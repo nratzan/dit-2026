@@ -1,7 +1,5 @@
 # AI Upskilling for Product Designers: The E-P-I-A-S × SAE Framework
 
-![](assets/epias.png)
-
 I made this system after being asked for one. And I know that by the time I publish it, it's not going to be perfectly correct. That said, something is better than nothing right now — so here it is.
 
 I'm presenting this as part of the [Design in Tech Report 2026: From UX to AX](https://schedule.sxsw.com/2026/events/PP1148536) at SXSW, but I wanted to open source it sooner rather than later. If you're a product designer trying to figure out where you stand with AI — or a design leader trying to upskill your team — I hope this gives you a useful frame.
@@ -12,7 +10,19 @@ This will be subject to more than a few changes this year. I know that for sure 
 
 ## How to Use This
 
-This framework has two axes. The first is "E-P-I-A-S" which is a maturity progression that describes how deeply you've internalized a skill, from Explorer (trying things out) to Steward (setting standards for others). The second is the SAE Level which is adapted from the automotive industry's levels of driving automation — which describes how much of your design workflow AI is responsible for.
+This framework has two axes. The first is "E-P-I-A-S" which is a maturity progression that describes how deeply you've internalized a skill, from Explorer (trying things out) to Steward (setting standards for others). 
+
+| ❶ E: Explorer | ❷ P: Practitioner | ❸ I: Integrator | ❹ A: Architect | ❺ S: Steward |
+| --- | --- | --- | --- | --- |
+| Trying things; learning basics | Building consistent habits | Making it part of workflow | Building systems others use | Setting standards; teaching others |
+
+You naturally progress ❶ E → ❷ P → ❸ I → ❹ A → ❺ S. 
+
+The second is the SAE Level which is adapted from the automotive industry's levels of driving automation — which describes how much of your design workflow AI is responsible for.
+
+![](https://users.ece.cmu.edu/~koopman/j3016/J3016_table.jpg)
+
+via [CMU](https://users.ece.cmu.edu/~koopman/j3016/#overview)
 
 Together they form a matrix. Here's how to navigate it:
 
@@ -174,41 +184,6 @@ _Science-fiction, might happen some day_
 # Congratulations!
 
 Do you feel a little better now? I hope so! I spent three weekends working on this ... but also have spent the last few decades on this problem, too. I don't expect to fully solve it before I kick the bucket, but I'll keep on trying to improve this system!
-
-
----
-
-# Appendix
-
-## The Full Matrix: E-P-I-A-S × SAE Levels (L0–L5)
-
-For the completionists out there, here's the longform view.
-
-| SAE Level                               | E: <br>Explorer <br>❶→                                                                     | P: <br>Practitioner <br>❷→                                                              | I: <br>Integrator <br>❸→                                                                                           | A: <br>Architect <br>❹→                                                                                      | S: <br>Steward <br>→❺                                                                                                      |
-| --------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| SAE L0 <br>Manual <br>🚗💨              | Exploring craft fundamentals; learning manual techniques with inconsistent results | Consistent manual practice with developed habits and repeatable techniques      | Manual workflow fully integrated with validation steps, traceability, and clear decision documentation     | Built reusable manual systems, templates, and processes that others on the team adopt                | Set organizational standards for craft quality; mentor others in manual techniques; maintain shared design systems |
-| SAE L1 <br>AI-Assisted <br>🚗➕          | Trying AI tools; quality varies; learning prompting and refinement                 | Using AI consistently with saved prompts and basic quality checks               | AI embedded end-to-end with documented validation, sources traced, and decisions framed clearly            | Created prompt libraries, workflow templates, and quality frameworks that teams reliably use         | Maintain team standards for AI assist tools; mentor on prompt engineering; govern AI-assisted usage                |
-| SAE L2 <br>Partially Automated <br>🚗🧠 | Experimenting with app builders; manual integration with trial-and-error           | Generating bounded chunks reliably; standard QA for integration                 | Generated components validated with clear integration patterns and traceability from instruction to output | Built reusable component templates and generation workflows others adopt and trust                   | Set standards for partial automation; mentor on integration patterns; govern which chunks are automated            |
-| SAE L3 <br>Guided Automation <br>🚗😴   | Learning IDE-centric workflows and basic context engineering; hit-or-miss results  | Running multi-step workflows consistently with checkpoints and basic evals      | Orchestrated workflows with robust evals and clear decision framing for AI vs human intervention           | Built Skills, MCP tools, and eval suites others run; maintained shared context libraries             | Organizational standards for IDE + AI workflows; mentor on context engineering; maintain shared Skills/MCP         |
-| SAE L4<br>Mostly Automated <br>🚕🤖     | Trying advanced harnesses and toolchains; heavy validation and debugging           | Operating harnesses with repeatable patterns; consistent eval workflows         | End-to-end generation validated with comprehensive eval suites; exception patterns documented              | Built infrastructure others operate; self-improving harnesses, eval systems, and reusable toolchains | Governance for autonomous systems at scale; mentor on harness design; maintain organizational eval infrastructure  |
-| SAE L5<br>Full Autonomy <br>🚗✨         | Exploring goal-setting interfaces for autonomy; unclear exception handling         | Setting approval gates and quality bars consistently; routine review of outputs | Autonomous workflows validated with exception-handling systems and documented escalation paths             | Designed trusted goal-setting, approval, and governance systems others rely on                       | Enterprise AI governance; approval frameworks; organizational risk, trust, and accountability standards            |
-
-And the concise version for quick reference:
-
-| SAE Level                               | E: <br>Explorer <br>❶→                                                                     | P: <br>Practitioner <br>❷→                                                              | I: <br>Integrator <br>❸→                                                                                           | A: <br>Architect <br>❹→                                                                                      | S: <br>Steward <br>→❺                                                                                                      |
-| ----------------------------------- | ---------------------------------------------- | ----------------------------------------- | --------------------------------------------- | -------------------------------------------- | ----------------------------------------------------- |
-| SAE L0 Manual <br>🚗💨              | Learning fundamentals; inconsistent results    | Consistent habits; repeatable techniques  | Validated workflow; documented decisions      | Reusable systems others adopt                | Org standards; mentors; maintains systems             |
-| SAE L1 AI-Assisted <br>🚗➕          | Trying tools; needs guidance                   | Saved prompts; routine quality checks     | End-to-end integration; documented validation | Shared prompt libraries; team workflows      | Team standards; mentors; governs use                  |
-| SAE L2 Partially Automated <br>🚗🧠 | Experimenting; trial-and-error integration     | Reliable generation; standard QA          | Validated generation; clear traceability      | Reusable templates others trust              | Automation standards; mentors; governs scope          |
-| SAE L3 Guided Automation <br>🚗😴   | Learning workflows; hit-or-miss results        | Consistent workflows; routine checkpoints | Robust evals; clear decision framing          | Shared Skills/tools; context libraries       | Workflow standards; mentors; maintains Skills         |
-| SAE L4 Mostly Automated 🚕🤖        | Trying infrastructure; heavy validation needed | Repeatable patterns; consistent evals     | Comprehensive evals; documented exceptions    | Self-improving infrastructure others operate | Enterprise governance; mentors; maintains evals       |
-| SAE L5 Full Autonomy 🚗✨            | Exploring autonomy; unclear exception handling | Consistent gates; routine reviews         | Validated autonomy; documented escalation     | Trusted governance frameworks                | Risk governance; approval frameworks; trust standards |
-
----
-
-## A Note on Reading This Matrix
-
-You can progress E→P→I→A→S at *any* SAE level. An S-Steward at L1 (organizational ChatGPT governance) is more mature than an E-Explorer at L4 (fumbling with advanced toolchains). Maturity isn't about racing up the SAE ladder — it's about deepening judgment, reliability, and organizational impact wherever you operate.
 
 ---
 
