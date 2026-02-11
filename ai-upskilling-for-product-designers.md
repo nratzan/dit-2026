@@ -1,4 +1,4 @@
-# AI Upskilling for Product Designers: The E-P-I-A-S × SAE Framework
+# AI Upskilling for Product Designers: The SAE × E-P-I-A-S Framework
 
 I made this system after being asked for one. And I know that by the time I publish it, it's not going to be perfectly correct. That said, something is better than nothing right now, so here it is.
 
@@ -28,11 +28,11 @@ via [CMU](https://users.ece.cmu.edu/~koopman/j3016/#overview)
 
 Together they form a matrix. Here's how to navigate it:
 
-1. **Start by finding your SAE Level.** Use the self-assessment to identify where your current AI usage falls, from L0 (fully manual) to L4 (mostly automated). Be honest. Most product designers in early 2026 are somewhere between L1 and L2.
+1. **Situate your E-P-I-A-S maturity stage, which will vary depending on the level you are pursuing.** Are you just experimenting (Explorer)? Running consistent workflows (Practitioner)? Building systems others rely on (Architect)? Your maturity at your current level matters more than which level you're at.
 
-2. **Then find your E-P-I-A-S maturity within that level.** Are you just experimenting (Explorer)? Running consistent workflows (Practitioner)? Building systems others rely on (Architect)? Your maturity at your current level matters more than which level you're at.
+2. **Find your SAE Level(s) that you are pursuing in this AI revolution.** Use the self-assessment to identify where your current AI usage falls, from L0 (fully manual) to L4 (mostly automated). Be honest. Most product designers in early 2026 are somewhere between L1 and L2.
 
-3. **Use the matrix to plan your growth.** You can grow in two directions: deeper (E→S within your current SAE level) or wider (moving up an SAE level). Both are valuable. Going deeper at L1 before jumping to L3 is often the smarter path, because the judgment and habits you build carry forward.
+3. **Use the SAE matrix to plan your growth.** You can grow in two directions: deeper (E→S within your current SAE level) or wider (moving up an SAE level). Both are valuable. Going deeper at L1 before jumping to L3 is often the smarter path, because the judgment and habits you build carry forward.
 
 **BONUS:** If you're a design leader, use this to map your team. You'll likely find people spread across multiple SAE levels and maturity stages. That's normal and healthy. The framework helps you have concrete conversations about where people are and where they want to go, without it becoming a race to the highest SAE number.
 
@@ -40,7 +40,7 @@ One important thing to internalize: **an S-Steward at SAE L1 (someone who's buil
 
 ---
 
-# Step 1: Find Your Learning Maturity Stage At Your SAE Level
+# Step 1: Get Familiar With E-P-I-A-S Learning Stages
 
 We start with a generic maturity progression for a learner. HT Monty Hammontree for his advice on this instrument that I changed a teense to create the catchy acronym E-P-I-A-S.
 
@@ -156,7 +156,7 @@ Note: L2, L3, and L4 tooling is getting blurrier every day as systems vertically
 
 ---
 
-# Step 3: Use Your Current E-P-I-A-S Stage Within An SAE Level To Plot A Path To The Next Stage
+# Step 3: Determine Your E-P-I-A-S Stage Within Any SAE Level
 
 The goal of AI as embedded in product design work mirrors the evolution of the automotive industry and its levels of automation. SAE L0 is simply "manual" mode for product designers. The goal isn't necessarily to move up automation levels; it depends upon the kind of work you're tasked to do. That said, it's always useful to see what kind of work is done at "higher" levels up the food chain.
 
