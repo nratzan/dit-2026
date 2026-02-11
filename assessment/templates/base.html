@@ -17,13 +17,14 @@
             <a href="/framework" class="{% if '/framework' in request.path %}active{% endif %}">Read</a>
             <a href="/assess" class="{% if request.path == '/assess' %}active{% endif %}">Assess</a>
             <a href="/chat" class="{% if '/chat' in request.path %}active{% endif %}">Chat</a>
+            <a href="/heatmap" class="{% if request.path == '/heatmap' %}active{% endif %}">Heatmap</a>
         </div>
     </nav>
     <main class="container">
         {% block content %}{% endblock %}
     </main>
     <footer class="site-footer">
-        <p>Based on <a href="https://schedule.sxsw.com/2026/events/PP1148536" target="_blank">Design in Tech Report 2026</a> by John Maeda. Open source framework.</p>
+        <p>Made by Noah Ratzan</p>
     </footer>
     {% block scripts %}{% endblock %}
 </body>

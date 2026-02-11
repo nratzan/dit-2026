@@ -24,6 +24,9 @@ class Settings(BaseSettings):
     # Default provider (auto-detect if not set)
     default_provider: Optional[str] = None
 
+    # Firestore
+    firestore_enabled: bool = False
+
     # Embedding
     embedding_model: str = "text-embedding-3-large"
     embedding_dimensions: int = 3072

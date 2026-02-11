@@ -9,3 +9,4 @@ anthropic>=0.40
 google-generativeai>=0.4
 requests>=2.31
 gunicorn>=21.0
+google-cloud-firestore>=2.16

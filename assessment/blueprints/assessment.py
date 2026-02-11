@@ -25,6 +25,12 @@ def submit_assessment():
     answers = request.get_json()
     score = score_assessment(answers)
     placement = get_placement(score)
+    # Store anonymous result (fire-and-forget)
+    try:
+        from storage import store_result
+        store_result(score['sae_level'], score['epias_stage'])
+    except Exception as e:
+        current_app.logger.warning(f"Failed to store result: {e}")
     # Find relevant growth path chunks via search
     query = f"growth path for SAE L{placement['sae_level']} {placement['epias_stage']}"
     chunks = current_app.search_engine.search(query, top_k=5)
@@ -35,6 +41,11 @@ def submit_assessment():
 @bp.route('/results')
 def results():
     return render_template('results.html')
+
+
+@bp.route('/heatmap')
+def heatmap():
+    return render_template('heatmap.html')
 
 
 @bp.route('/settings')

@@ -98,6 +98,16 @@
                 saveState();
                 renderSaeQuestion(idx);
                 updateButtons();
+                // Auto-advance after brief visual feedback
+                setTimeout(() => {
+                    if (idx < totalSaeQuestions - 1) {
+                        state.currentQuestion = idx + 1;
+                        saveState();
+                        renderSaeQuestion(state.currentQuestion);
+                    } else {
+                        transitionToEpias();
+                    }
+                }, 300);
             });
         });
 
@@ -132,6 +142,16 @@
                 saveState();
                 renderEpiasQuestion(idx);
                 updateButtons();
+                // Auto-advance after brief visual feedback
+                setTimeout(() => {
+                    if (idx < state.epiasQuestions.length - 1) {
+                        state.currentQuestion = idx + 1;
+                        saveState();
+                        renderEpiasQuestion(state.currentQuestion);
+                    } else {
+                        submitAssessment();
+                    }
+                }, 300);
             });
         });
 

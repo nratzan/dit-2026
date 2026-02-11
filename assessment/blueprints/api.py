@@ -48,6 +48,13 @@ def get_matrix():
     return jsonify(get_full_matrix())
 
 
+@bp.route('/heatmap')
+def heatmap_data():
+    """Return aggregated assessment results for the heatmap."""
+    from storage import get_heatmap_data
+    return jsonify(get_heatmap_data())
+
+
 @bp.route('/keys', methods=['GET'])
 def get_keys():
     """Keys are managed via GCP Secret Manager. No runtime key info exposed."""

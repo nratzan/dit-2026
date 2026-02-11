@@ -4,46 +4,46 @@
 # Extracted from the DIT 2026 framework
 MATRIX_DATA = {
     # SAE L0: Manual
-    (0, "E"): "Exploring craft fundamentals; learning manual techniques with inconsistent results.",
-    (0, "P"): "Consistent manual practice with developed habits and repeatable techniques.",
-    (0, "I"): "Manual workflow fully integrated with validation steps, traceability, and clear decision documentation.",
-    (0, "A"): "Built reusable manual systems, templates, and processes that others on the team adopt.",
-    (0, "S"): "Set organizational standards for craft quality; mentor others in manual techniques; maintain shared design systems.",
+    (0, "E"): "Exploring fundamentals; inconsistent results, still learning.",
+    (0, "P"): "Consistent manual practice with repeatable techniques.",
+    (0, "I"): "Manual workflow with validation, traceability, and documented decisions.",
+    (0, "A"): "Reusable templates and processes the team adopts.",
+    (0, "S"): "Organizational standards for craft quality; mentors others.",
 
     # SAE L1: AI-Assisted
-    (1, "E"): "Trying ChatGPT, Midjourney, Firefly for ideas or drafts; outputs are hit-or-miss and heavily rewritten.",
-    (1, "P"): "Using AI daily with saved prompts; consistent structure, tone, and basic quality checks before use.",
-    (1, "I"): "AI embedded across a full task (research \u2192 ideation \u2192 draft \u2192 refine) with sources noted, decisions explained, and manual validation.",
-    (1, "A"): "Shared prompt libraries, review checklists, and example outputs teammates can reuse and trust.",
-    (1, "S"): "Team standards for AI-assisted work (what's allowed, how it's reviewed); mentors others on prompting and judgment; governs usage.",
+    (1, "E"): "Trying AI for ideas and drafts; hit-or-miss, heavily rewritten.",
+    (1, "P"): "Using AI daily with saved prompts and basic quality checks.",
+    (1, "I"): "AI embedded across full tasks with sources noted and decisions explained.",
+    (1, "A"): "Shared prompt libraries and review checklists teammates reuse.",
+    (1, "S"): "Team standards for AI-assisted work; governs usage and review.",
 
     # SAE L2: Partially Automated
-    (2, "E"): "Trying app-builders (Bolt/Lovable/v0/Framer) to generate screens/components; lots of manual stitching and rework.",
-    (2, "P"): "Getting repeatable components from clear specs; using a simple 'definition of done' checklist before integrating.",
-    (2, "I"): "Outputs fit a known integration pattern (tokens/layout/a11y); prompts + inputs are traceable from request \u2192 result \u2192 final.",
-    (2, "A"): "Reusable component/flow templates + prompt packs that teammates can run and get consistent results.",
-    (2, "S"): "Team norms for what to automate at L2 (safe chunks vs risky ones); mentors others on integration + QA; governs usage and review expectations.",
+    (2, "E"): "Trying app-builders to generate screens; lots of rework needed.",
+    (2, "P"): "Repeatable components from clear specs with a done checklist.",
+    (2, "I"): "Outputs fit known patterns; prompts are traceable end-to-end.",
+    (2, "A"): "Reusable generators teammates run for consistent results.",
+    (2, "S"): "Team norms for what to automate; governs review expectations.",
 
     # SAE L3: Guided Automation
-    (3, "E"): "Moving work into an IDE (VS Code/Cursor); learning basic context rules; multi-step runs are inconsistent and fragile.",
-    (3, "P"): "Running reliable multi-step workflows inside the IDE with explicit checkpoints (plan \u2192 generate \u2192 review \u2192 revise); lightweight evals by default.",
-    (3, "I"): "Clear decision framing for IDE-run workflows: what AI executes, what humans approve, and when to intervene; failure modes documented.",
-    (3, "A"): "Shared IDE-invoked workflows: Skills/MCP tools, context libraries, and reusable eval templates teammates can run.",
-    (3, "S"): "Org standards for IDE-based AI work (safety, quality, traceability); mentorship on context engineering; maintains shared Skills/MCP.",
+    (3, "E"): "Moving into IDE workflows; multi-step runs are inconsistent.",
+    (3, "P"): "Reliable multi-step workflows with checkpoints and lightweight evals.",
+    (3, "I"): "Clear framing: what AI executes, what humans approve, when to intervene.",
+    (3, "A"): "Shared workflows, context libraries, and eval templates teammates run.",
+    (3, "S"): "Org standards for IDE-based AI work; maintains shared tools.",
 
     # SAE L4: Mostly Automated
-    (4, "E"): "Experimenting with autonomous harnesses and agent pipelines; results require heavy validation and manual debugging.",
-    (4, "P"): "Operating harnesses with repeatable execution patterns; evals, retries, and escalation paths are consistently applied.",
-    (4, "I"): "End-to-end workflows run autonomously; comprehensive eval suites validate outputs; exception classes and recovery paths documented.",
-    (4, "A"): "Built production-grade agent infrastructure others operate: self-improving harnesses, shared skill libraries, eval-driven pipelines.",
-    (4, "S"): "Governance for autonomous systems at scale; defines risk thresholds, approval gates, and accountability; maintains org-level eval infrastructure.",
+    (4, "E"): "Experimenting with agent pipelines; results need heavy validation.",
+    (4, "P"): "Harnesses with repeatable execution, evals, retries, and escalation.",
+    (4, "I"): "End-to-end autonomous workflows with comprehensive eval suites.",
+    (4, "A"): "Production-grade agent infrastructure others operate.",
+    (4, "S"): "Governance for autonomous systems at scale; org-level eval infrastructure.",
 
     # SAE L5: Full Automation
-    (5, "E"): "Exploring goal-setting interfaces for autonomous AI; exception handling is unclear.",
-    (5, "P"): "Setting approval gates and quality bars consistently; routine review of autonomous outputs.",
-    (5, "I"): "Autonomous workflows validated with exception handling systems; clear escalation paths documented.",
-    (5, "A"): "Designed goal-setting and approval systems that others trust; reusable governance frameworks.",
-    (5, "S"): "Enterprise governance for fully autonomous AI; set approval frameworks; organizational AI risk and trust standards.",
+    (5, "E"): "Exploring goal-setting for autonomous AI; exception handling unclear.",
+    (5, "P"): "Consistent approval gates and routine review of autonomous outputs.",
+    (5, "I"): "Autonomous workflows with documented exception handling and escalation.",
+    (5, "A"): "Goal-setting and approval systems others trust; reusable governance.",
+    (5, "S"): "Enterprise governance for fully autonomous AI; org-wide trust standards.",
 }
 
 
@@ -215,9 +215,8 @@ GROWTH_PATHS = {
 
 # Key insight from the framework
 KEY_INSIGHT = (
-    "An S-Steward at SAE L1 (someone who's built organizational standards for ChatGPT usage) "
-    "is more mature and more valuable than an E-Explorer at SAE L4 (someone fumbling with advanced toolchains). "
-    "Depth of judgment beats breadth of tooling every time."
+    "An S-Steward at L1 is more valuable than an E-Explorer at L4. "
+    "Depth of judgment beats breadth of tooling."
 )
 
 

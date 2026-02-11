@@ -309,8 +309,8 @@ body {
 }
 .option-list {
     list-style: none;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 0.4rem;
 }
 .option-item {
@@ -354,7 +354,7 @@ body {
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* Results */
-.results-container { max-width: 800px; margin: 0 auto; }
+.results-container { max-width: 800px; margin: 0 auto; overflow-x: hidden; width: 100%; box-sizing: border-box; }
 
 .result-header {
     text-align: center;
@@ -527,6 +527,9 @@ body {
     height: calc(100vh - 120px);
     max-width: 800px;
     margin: 0 auto;
+    overflow-x: hidden;
+    width: 100%;
+    box-sizing: border-box;
 }
 .chat-header {
     display: flex;
@@ -688,7 +691,7 @@ body {
 }
 
 /* Framework Reader */
-.framework-reader { max-width: 800px; margin: 0 auto; }
+.framework-reader { max-width: 800px; margin: 0 auto; overflow-x: hidden; width: 100%; box-sizing: border-box; }
 
 .author-banner {
     background: var(--surface);
@@ -749,6 +752,9 @@ body {
     box-shadow: var(--shadow);
     line-height: 1.7;
     font-size: 0.95rem;
+    overflow-x: auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 .reader-content h1 { font-size: 1.8rem; margin: 0 0 1rem; }
 .reader-content h2 { font-size: 1.35rem; margin: 1.75rem 0 0.75rem; color: var(--primary); }
@@ -777,7 +783,30 @@ body {
     font-size: 0.85em;
 }
 .reader-content a { color: var(--primary); }
-.reader-content .chunk-table { margin: 1rem 0; }
+.reader-content .chunk-table {
+    margin: 1rem 0;
+    width: 100%;
+    border-collapse: collapse;
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.reader-content .chunk-table th,
+.reader-content .chunk-table td {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border);
+    text-align: left;
+    font-size: 0.9rem;
+}
+.reader-content .chunk-table th {
+    background: var(--bg);
+    font-weight: 600;
+}
+.reader-content .chunk-table thead,
+.reader-content .chunk-table tbody,
+.reader-content .chunk-table tr {
+    display: revert;
+}
 
 .reader-nav {
     display: flex;
@@ -879,6 +908,10 @@ body {
     margin-top: 2rem;
     text-align: center;
     box-shadow: var(--shadow);
+    overflow-x: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    box-sizing: border-box;
 }
 .chat-demo-notice h3 {
     font-size: 1.3rem;
@@ -907,6 +940,35 @@ body {
     margin-top: 0.5rem;
 }
 
+/* Heatmap */
+.heatmap-cell {
+    transition: all 0.2s;
+    cursor: default;
+    min-height: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+.heatmap-cell:hover {
+    outline: 2px solid var(--primary);
+    outline-offset: -2px;
+}
+.heatmap-legend {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+.heatmap-legend-bar {
+    width: 200px;
+    height: 12px;
+    border-radius: 6px;
+    background: linear-gradient(to right, #f8fafc, var(--primary));
+    border: 1px solid var(--border);
+}
+
 /* Footer */
 .site-footer {
     text-align: center;
@@ -921,7 +983,7 @@ body {
 @media (max-width: 768px) {
     .mode-cards, .framework-axes { grid-template-columns: 1fr; }
     #saeStage, #epiasStage { grid-template-columns: 1fr; }
-    .option-list { grid-template-columns: 1fr; }
+    .option-list { gap: 0.35rem; }
     .hero h1 { font-size: 1.7rem; }
     .subtitle { white-space: normal; }
     .container { padding: 1rem; }
@@ -930,6 +992,10 @@ body {
     .framework-preview { padding: 1.25rem; }
     .chat-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
     .model-bar { width: 100%; }
+    .matrix-table td { min-width: 75px; }
+    .matrix-table th, .matrix-table td { padding: 0.4rem; font-size: 0.75rem; }
+    .placement-badge { flex-direction: column; gap: 0.5rem; }
+    .result-actions { flex-wrap: wrap; justify-content: center; }
 }
 
 /* Responsive — Mobile */
@@ -969,19 +1035,35 @@ body {
     .stage-desc { font-size: 0.85rem; }
 
     /* Results */
+    .result-header h1 { font-size: 1.2rem; }
     .placement-badge { flex-direction: column; gap: 0.5rem; }
-    .badge-level, .badge-stage { font-size: 0.95rem; padding: 0.4rem 1rem; }
-    .result-description { padding: 1rem; font-size: 0.95rem; }
-    .matrix-table td { min-width: 60px; }
-    .matrix-table th, .matrix-table td { padding: 0.35rem; font-size: 0.7rem; }
-    .growth-card { padding: 1rem; }
-    .result-actions { flex-direction: column; align-items: stretch; }
-    .result-actions .btn { text-align: center; }
+    .badge-level, .badge-stage { font-size: 0.85rem; padding: 0.35rem 0.75rem; }
+    .result-description { padding: 0.75rem; font-size: 0.88rem; }
+    .matrix-section h2 { font-size: 1.05rem; }
+    #matrixContainer { padding: 0.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .matrix-table { font-size: 0.65rem; }
+    .matrix-table td { min-width: 50px; }
+    .matrix-table th, .matrix-table td { padding: 0.25rem 0.2rem; font-size: 0.6rem; }
+    .matrix-table th { font-size: 0.55rem; }
+    .matrix-cell { min-height: 28px; }
+    .growth-section h2 { font-size: 1.05rem; }
+    .growth-card { padding: 0.75rem; font-size: 0.88rem; }
+    .growth-next { font-size: 0.95rem; }
+    .growth-signal blockquote { padding: 0.5rem 0.75rem; font-size: 0.85rem; }
+    .growth-actions ul { padding-left: 1.25rem; }
+    .growth-actions li { font-size: 0.85rem; }
+    .insight-section .key-insight { font-size: 0.85rem; padding: 0.6rem 0.85rem; }
+    .related-section h2 { font-size: 1.05rem; }
+    .chunk-card { padding: 0.75rem; font-size: 0.82rem; }
+    .chunk-source { font-size: 0.7rem; }
+    .chunk-table th, .chunk-table td { padding: 0.25rem 0.4rem; font-size: 0.75rem; }
+    .result-actions { flex-direction: column; align-items: stretch; gap: 0.5rem; }
+    .result-actions .btn { text-align: center; font-size: 0.88rem; }
 
     /* Chat */
     .chat-container { height: calc(100vh - 100px); }
     .chat-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
-    .chat-header h2 { font-size: 1.1rem; }
+    .chat-header h2 { font-size: 1.1rem; white-space: normal; }
     .model-bar { width: 100%; flex-direction: column; gap: 0.4rem; }
     .model-bar-group { width: 100%; }
     .model-bar-group select { width: 100%; }
@@ -989,20 +1071,25 @@ body {
     .message-content { max-width: 90%; padding: 0.6rem 1rem; font-size: 0.9rem; }
     .suggestion { font-size: 0.75rem; padding: 0.3rem 0.6rem; }
     .chat-form input { padding: 0.6rem 0.75rem; font-size: 0.9rem; }
-    .chat-demo-notice { padding: 1.25rem; }
+    .chat-demo-notice { padding: 1rem; }
     .chat-demo-notice h3 { font-size: 1.1rem; }
     .chat-demo-notice p { font-size: 0.85rem; }
-    .chat-demo-notice pre { padding: 0.75rem; margin: 0.75rem auto; }
+    .chat-demo-notice pre { padding: 0.6rem; margin: 0.75rem auto; max-width: 100%; font-size: 0.75rem; }
+    .chat-demo-notice code { font-size: 0.75rem; }
 
     /* Framework Reader */
-    .reader-content { padding: 1rem 0.75rem; font-size: 0.88rem; }
-    .reader-content h1 { font-size: 1.3rem; }
-    .reader-content h2 { font-size: 1.1rem; }
-    .reader-content h3 { font-size: 0.95rem; }
-    .reader-tab { padding: 0.45rem 0.75rem; font-size: 0.8rem; }
-    .author-banner { padding: 0.75rem 1rem; }
-    .author-attribution strong { font-size: 0.95rem; }
-    .author-detail { font-size: 0.75rem; }
+    .reader-content { padding: 0.75rem; font-size: 0.85rem; }
+    .reader-content h1 { font-size: 1.2rem; }
+    .reader-content h2 { font-size: 1.05rem; }
+    .reader-content h3 { font-size: 0.9rem; }
+    .reader-content .chunk-table th,
+    .reader-content .chunk-table td { padding: 0.3rem 0.4rem; font-size: 0.75rem; }
+    .reader-tab { padding: 0.4rem 0.6rem; font-size: 0.75rem; }
+    .reader-tabs { gap: 0; }
+    .author-banner { padding: 0.6rem 0.75rem; }
+    .author-attribution strong { font-size: 0.9rem; }
+    .author-detail { font-size: 0.7rem; }
+    .author-note { font-size: 0.75rem; }
     .reader-nav { flex-direction: column; gap: 0.5rem; }
     .reader-nav .btn { text-align: center; }
 

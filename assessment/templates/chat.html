@@ -34,14 +34,13 @@
     {% if not has_llm %}
     <div class="chat-demo-notice">
         <h3>RAG Chat — Run Locally</h3>
-        <p>This feature uses retrieval-augmented generation to let you have a conversation grounded in the framework text. It supports OpenAI, Anthropic, Google, and local Ollama models.</p>
-        <p>To try it, clone the repo and run locally:</p>
+        <p>RAG-powered conversation grounded in the framework text. Supports OpenAI, Anthropic, Google, and Ollama.</p>
+        <p>Clone the repo and run locally:</p>
         <pre><code>git clone https://github.com/aji-ai/dit-2026.git
 cd dit-2026/assessment
 pip install -r requirements.txt
 python __main__.py</code></pre>
-        <p>When running locally, a <strong>Settings</strong> page appears in the navigation where you can configure your API key.</p>
-        <p>The chat component is built as a reusable RAG module&mdash;fork the repo to embed framework-grounded chat in your own tools and workflows.</p>
+        <p>A <strong>Settings</strong> page appears locally to configure your API key. Fork the repo to embed this RAG module in your own tools.</p>
         <a href="https://github.com/aji-ai/dit-2026" class="btn btn-primary" target="_blank">View on GitHub</a>
     </div>
     {% else %}
