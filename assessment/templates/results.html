@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}Your Results — DIT 2026{% endblock %}
+
+{% block content %}
+<div class="results-container">
+    <div id="resultsContent" style="display:none;">
+        <!-- Placement Summary -->
+        <div class="result-header">
+            <h1>Your Designer Profile</h1>
+            <div class="placement-badge">
+                <span class="badge-level" id="badgeLevel"></span>
+                <span class="badge-stage" id="badgeStage"></span>
+            </div>
+        </div>
+
+        <div class="result-description" id="cellDescription"></div>
+
+        <!-- Matrix Visualization -->
+        <div class="matrix-section">
+            <h2>Your Position on the Framework</h2>
+            <div id="matrixContainer"></div>
+        </div>
+
+        <!-- Growth Path -->
+        <div class="growth-section">
+            <h2>Your Growth Path</h2>
+            <div class="growth-card">
+                <div class="growth-next" id="growthNext"></div>
+                <div class="growth-signal">
+                    <strong>Signal you've leveled up:</strong>
+                    <blockquote id="growthSignal"></blockquote>
+                </div>
+                <div class="growth-actions">
+                    <strong>Concrete next steps:</strong>
+                    <ul id="growthActions"></ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Insight -->
+        <div class="insight-section">
+            <blockquote class="key-insight" id="keyInsight"></blockquote>
+        </div>
+
+        <!-- Related Framework Content -->
+        <div class="related-section">
+            <h2>Relevant Framework Excerpts</h2>
+            <div id="relatedChunks"></div>
+        </div>
+
+        <!-- Actions -->
+        <div class="result-actions">
+            <button class="btn btn-primary" id="downloadPdf">Download PDF</button>
+            <a href="/assess" class="btn btn-secondary" id="retakeLink">Retake Assessment</a>
+            <a href="/chat" class="btn btn-primary" id="chatLink" style="display:none;">Chat About Your Results</a>
+        </div>
+    </div>
+
+    <!-- No Results -->
+    <div id="noResults">
+        <h2>No Assessment Results</h2>
+        <p>Please complete the assessment first.</p>
+        <a href="/assess" class="btn btn-primary">Take the Assessment</a>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='matrix.js') }}"></script>
+<script src="{{ url_for('static', filename='results.js') }}"></script>
+{% endblock %}

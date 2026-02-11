@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}DIT 2026 Assessment{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-brand">
+            <a href="/">DIT 2026 &mdash; E-P-I-A-S &times; SAE</a>
+        </div>
+        <div class="nav-links">
+            <a href="/" class="{% if request.path == '/' %}active{% endif %}">Home</a>
+            <a href="/framework" class="{% if '/framework' in request.path %}active{% endif %}">Read</a>
+            <a href="/assess" class="{% if request.path == '/assess' %}active{% endif %}">Assess</a>
+            <a href="/chat" class="{% if '/chat' in request.path %}active{% endif %}">Chat</a>
+        </div>
+    </nav>
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="site-footer">
+        <p>Based on <a href="https://schedule.sxsw.com/2026/events/PP1148536" target="_blank">Design in Tech Report 2026</a> by John Maeda. Open source framework.</p>
+    </footer>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

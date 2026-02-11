@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% block title %}Settings — DIT 2026{% endblock %}
+
+{% block content %}
+<div class="settings-container">
+    <h1>API Key Settings</h1>
+    <p class="subtitle">Add your own API keys to enable the Chat feature. Keys are stored in memory only &mdash; they are never written to disk and are cleared when the server restarts.</p>
+
+    <div id="statusMessage" class="alert" style="display:none;"></div>
+
+    <div class="key-cards">
+        <div class="key-card">
+            <div class="key-header">
+                <h3>OpenAI</h3>
+                <span class="key-badge" id="badge-openai">Not set</span>
+            </div>
+            <p class="key-model">GPT-5.1 &mdash; Best overall quality</p>
+            <input type="password" id="key-openai" placeholder="sk-..." autocomplete="off">
+            <p class="key-hint">Get a key at <a href="https://platform.openai.com/api-keys" target="_blank">platform.openai.com</a></p>
+        </div>
+
+        <div class="key-card">
+            <div class="key-header">
+                <h3>Anthropic</h3>
+                <span class="key-badge" id="badge-anthropic">Not set</span>
+            </div>
+            <p class="key-model">Claude Sonnet 4 &mdash; Strong reasoning</p>
+            <input type="password" id="key-anthropic" placeholder="sk-ant-..." autocomplete="off">
+            <p class="key-hint">Get a key at <a href="https://console.anthropic.com/settings/keys" target="_blank">console.anthropic.com</a></p>
+        </div>
+
+        <div class="key-card">
+            <div class="key-header">
+                <h3>Google</h3>
+                <span class="key-badge" id="badge-google">Not set</span>
+            </div>
+            <p class="key-model">Gemini 2.5 Flash &mdash; Fast and affordable</p>
+            <input type="password" id="key-google" placeholder="AI..." autocomplete="off">
+            <p class="key-hint">Get a key at <a href="https://aistudio.google.com/apikey" target="_blank">aistudio.google.com</a></p>
+        </div>
+    </div>
+
+    <div class="settings-actions">
+        <button class="btn btn-primary" id="saveBtn" onclick="saveKeys()">Save Keys</button>
+    </div>
+
+    <div class="settings-note">
+        <h3>Using a .env file instead</h3>
+        <p>You can also set keys by creating a <code>.env</code> file in the project root (see <code>.env.example</code>). Keys set in the .env file are loaded on startup and persist across restarts.</p>
+    </div>
+</div>
+
+<script>
+(function() {
+    'use strict';
+
+    // Load current key status on page load
+    fetch('/api/keys')
+        .then(r => r.json())
+        .then(data => {
+            for (const [provider, info] of Object.entries(data)) {
+                const badge = document.getElementById('badge-' + provider);
+                if (info.set) {
+                    badge.textContent = info.masked;
+                    badge.classList.add('active');
+                }
+            }
+        });
+
+    // Expose saveKeys to onclick
+    window.saveKeys = function() {
+        const keys = {};
+        let hasAny = false;
+        ['openai', 'anthropic', 'google'].forEach(p => {
+            const val = document.getElementById('key-' + p).value.trim();
+            if (val) { keys[p] = val; hasAny = true; }
+        });
+
+        if (!hasAny) {
+            showStatus('Please enter at least one API key.', 'warning');
+            return;
+        }
+
+        const btn = document.getElementById('saveBtn');
+        btn.disabled = true;
+        btn.textContent = 'Saving...';
+
+        fetch('/api/keys', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(keys),
+        })
+        .then(r => r.json())
+        .then(data => {
+            // Clear inputs
+            ['openai', 'anthropic', 'google'].forEach(p => {
+                document.getElementById('key-' + p).value = '';
+            });
+
+            // Update badges
+            data.providers.forEach(p => {
+                const badge = document.getElementById('badge-' + p.name);
+                if (badge) {
+                    if (p.available) {
+                        badge.textContent = 'Active';
+                        badge.classList.add('active');
+                    } else {
+                        badge.textContent = 'Not set';
+                        badge.classList.remove('active');
+                    }
+                }
+            });
+
+            const names = data.updated.join(', ');
+            showStatus('Keys saved for: ' + names + '. Chat is now available!', 'success');
+        })
+        .catch(e => {
+            showStatus('Error saving keys: ' + e.message, 'warning');
+        })
+        .finally(() => {
+            btn.disabled = false;
+            btn.textContent = 'Save Keys';
+        });
+    };
+
+    function showStatus(msg, type) {
+        const el = document.getElementById('statusMessage');
+        el.textContent = msg;
+        el.className = 'alert alert-' + type;
+        el.style.display = 'block';
+    }
+})();
+</script>
+{% endblock %}

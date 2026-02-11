@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %}DIT 2026 — What Kind of Designer Am I?{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>What Kind of AI-Augmented Designer Are You?</h1>
+    <p class="subtitle">Find your place on John Maeda's E-P-I-A-S &times; SAE Framework from the <strong>Design in Tech Report 2026</strong>.</p>
+    <div class="quick-links">
+        <a href="/framework">Read the framework</a>
+        <span class="quick-links-sep">&middot;</span>
+        <a href="https://github.com/aji-ai/dit-2026" target="_blank">View on GitHub</a>
+    </div>
+</div>
+
+{% if error %}
+<div class="alert alert-warning">{{ error }}</div>
+{% endif %}
+
+<div class="mode-cards">
+    <div class="mode-card">
+        <h2><span class="mode-icon">&#x1F50D;</span> Self-Assessment</h2>
+        <p>Answer 11 questions to discover your SAE automation level (L0&ndash;L5) and your E-P-I-A-S maturity stage (Explorer to Steward).</p>
+        <ul class="features">
+            <li>6 questions to find your SAE level</li>
+            <li>5 questions to find your maturity stage</li>
+            <li>Interactive matrix visualization</li>
+            <li>Personalized growth path</li>
+        </ul>
+        <a href="/assess" class="btn btn-primary">Take the Assessment</a>
+    </div>
+
+    <div class="mode-card {% if not has_llm %}disabled{% endif %}">
+        <h2><span class="mode-icon">&#x1F4AC;</span> Chat with the Framework</h2>
+        <p>Ask questions about the framework. Get personalized advice on your growth path, powered by RAG and your choice of LLM.</p>
+        <ul class="features">
+            <li>Semantic search over framework content</li>
+            <li>Multi-provider LLM support</li>
+            <li>Source citations from the report</li>
+            <li>Conversation history</li>
+        </ul>
+        {% if has_llm %}
+        <a href="/chat" class="btn btn-primary">Start Chatting</a>
+        {% else %}
+        <div class="btn btn-disabled">Requires API Key</div>
+        <p class="hint">Run locally with your own API key to enable.</p>
+        {% endif %}
+    </div>
+</div>
+
+<div class="scroll-hint" onclick="document.querySelector('.framework-preview').scrollIntoView({behavior:'smooth'})">
+    <span class="scroll-hint-text">Learn about the framework</span>
+    <svg class="scroll-chevron" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+</div>
+
+<div class="framework-preview">
+    <h2>About the E-P-I-A-S &times; SAE Framework</h2>
+    <p>From John Maeda's <strong>Design in Tech Report 2026: From UX to AX</strong>, presented at <a href="https://schedule.sxsw.com/2026/events/PP1148536" target="_blank">SXSW 2026</a>. This framework maps AI adoption for product designers along two axes:</p>
+    <div class="framework-axes">
+        <div class="axis">
+            <h3>SAE Levels (Automation)</h3>
+            <table class="mini-table">
+                <tr><td><strong>L0</strong></td><td>Manual &mdash; no AI</td></tr>
+                <tr><td><strong>L1</strong></td><td>AI-Assisted &mdash; AI suggests, you decide</td></tr>
+                <tr><td><strong>L2</strong></td><td>Partially Automated &mdash; AI builds chunks</td></tr>
+                <tr><td><strong>L3</strong></td><td>Guided Automation &mdash; IDE-centric workflows</td></tr>
+                <tr><td><strong>L4</strong></td><td>Mostly Automated &mdash; harness-centric</td></tr>
+                <tr><td><strong>L5</strong></td><td>Full Automation &mdash; aspirational</td></tr>
+            </table>
+        </div>
+        <div class="axis">
+            <h3>E-P-I-A-S (Maturity)</h3>
+            <table class="mini-table">
+                <tr><td><strong>E</strong></td><td>Explorer &mdash; trying things, learning basics</td></tr>
+                <tr><td><strong>P</strong></td><td>Practitioner &mdash; consistent habits</td></tr>
+                <tr><td><strong>I</strong></td><td>Integrator &mdash; part of workflow</td></tr>
+                <tr><td><strong>A</strong></td><td>Architect &mdash; systems others use</td></tr>
+                <tr><td><strong>S</strong></td><td>Steward &mdash; setting standards</td></tr>
+            </table>
+        </div>
+    </div>
+    <blockquote class="key-insight">
+        &ldquo;An S-Steward at SAE L1 is more mature and more valuable than an E-Explorer at SAE L4. Depth of judgment beats breadth of tooling every time.&rdquo;
+        <cite>&mdash; John Maeda, DIT 2026</cite>
+    </blockquote>
+    <p class="evolving-note">This framework is a living document. The source content may have been updated since this app was built. Check the <a href="https://github.com/aji-ai/dit-2026" target="_blank">GitHub repository</a> for the latest version.</p>
+</div>
+{% endblock %}

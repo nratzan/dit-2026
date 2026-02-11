@@ -1,0 +1,70 @@
+name: Sync Upstream Framework Spec
+
+on:
+  schedule:
+    - cron: '0 9 * * *'  # Daily at 9am UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Add upstream remote
+        run: |
+          git remote add upstream https://github.com/aji-ai/dit-2026.git || true
+          git fetch upstream main
+
+      - name: Check for upstream changes
+        id: check
+        run: |
+          if git diff --quiet HEAD upstream/main -- ai-upskilling-for-product-designers.md v-0.0.1/; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No upstream changes detected."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Upstream changes detected!"
+            git diff --stat HEAD upstream/main -- ai-upskilling-for-product-designers.md v-0.0.1/
+          fi
+
+      - name: Merge upstream changes
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git merge upstream/main --no-edit
+          # Sync root spec to v-0.0.1 if they diverge
+          cp ai-upskilling-for-product-designers.md v-0.0.1/ai-upskilling-for-product-designers.md
+          if ! git diff --quiet v-0.0.1/; then
+            git add v-0.0.1/ai-upskilling-for-product-designers.md
+            git commit -m "chore: sync v-0.0.1 spec with upstream root copy"
+          fi
+
+      - name: Create Pull Request
+        if: steps.check.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: chore/sync-upstream-spec
+          title: "chore: sync upstream framework spec"
+          body: |
+            Automated sync from [aji-ai/dit-2026](https://github.com/aji-ai/dit-2026).
+
+            John Maeda updated the framework spec. This PR merges those changes and syncs the `v-0.0.1/` copy that the app reads from.
+
+            **After merging**, the deploy workflow will automatically build and deploy to Cloud Run.
+
+            If the chat feature is enabled, you may also want to regenerate embeddings:
+            ```bash
+            cd assessment && python scripts/generate_embeddings.py
+            ```
+          labels: upstream-sync
+          delete-branch: true
