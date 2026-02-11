@@ -199,6 +199,7 @@ body {
     border-radius: var(--radius);
     padding: 2rem;
     margin-bottom: 2rem;
+    scroll-margin-top: 70px;
 }
 .framework-axes {
     display: grid;
@@ -783,6 +784,13 @@ body {
     font-size: 0.85em;
 }
 .reader-content a { color: var(--primary); }
+.reader-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    margin: 1rem 0;
+    display: block;
+}
 .reader-content .chunk-table {
     margin: 1rem 0;
     width: 100%;
