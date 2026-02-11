@@ -6,6 +6,8 @@ I'm presenting this as part of the [Design in Tech Report 2026: From UX to AX](h
 
 This will be subject to more than a few changes this year. I know that for sure ;-). —JM
 
+> NEW: Try out the simple mapper https://johnmaeda.github.io/dit26-ai-upskilling-gameboard/
+
 ---
 
 ## How to Use This
