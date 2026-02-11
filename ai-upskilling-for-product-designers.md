@@ -36,7 +36,7 @@ Together they form a matrix. Here's how to navigate it:
 
 **BONUS:** If you're a design leader, use this to map your team. You'll likely find people spread across multiple SAE levels and maturity stages. That's normal and healthy. The framework helps you have concrete conversations about where people are and where they want to go, without it becoming a race to the highest SAE number.
 
-One important thing to internalize: **an S-Steward at SAE L1 (someone who's built organizational standards for ChatGPT usage) is more mature and more valuable than an E-Explorer at SAE L4 (someone fumbling with advanced toolchains).** Depth of judgment beats breadth of tooling every time.
+One important thing to internalize: **an S-Steward at SAE L1 (someone who's built organizational standards for ChatGPT/Microsoft Copilot usage) is more mature and more valuable than an E-Explorer at SAE L4 (someone fumbling with advanced toolchains).** Depth of judgment beats breadth of tooling every time.
 
 ---
 
@@ -114,7 +114,7 @@ L5 — You own the AI's goals.
 | SAE Level | What Your Work Looks Like | Where This Work Typically Happens |
 | --- | --- | --- |
 | **SAE L0** <br/>Manual <br/>🚗💨 | "I do my design work without AI; I'm open to using the latest tool, but in general I prefer doing things as manually as possible." | Figma, Sketch (old skool), pen and paper (OG old skool), manual paper prototyping (OG IDEO skool) |
-| **SAE L1** <br/>AI-Assisted <br/>🚗➕ | "I use AI to generate ideas, copy, or visuals, but I direct each step and manually verify and refine everything." | ChatGPT, Midjourney, Microsoft Copilot, Figma Make, Krea, Adobe Firefly, Canva, DALL-E, Replicate, … |
+| **SAE L1** <br/>AI-Assisted <br/>🚗➕ | "I use AI to generate ideas, copy, or visuals, but I direct each step and manually verify and refine everything." | ChatGPT, Microsoft Copilot, Midjourney, Microsoft Copilot, Figma Make, Krea, Adobe Firefly, Canva, DALL-E, Replicate, … |
 | **SAE L2** <br/>Partially Automated <br/>🚗🧠 | "I use AI app-builders and hybrid design↔code canvases to generate bounded chunks (screens, components, flows, or small apps) from clear instructions, then I manually integrate and QA the results." | Lovable, Bolt.new, MagicPath, Pencil.dev (canvas mode), Vercel v0, Framer AI, Komposo, Replit, GitHub Spark, … |
 | **SAE L3** <br/>Guided Automation <br/>🚗😴 | "In my IDE, I run orchestrated, multi-step workflows with context engineering, using subagents/skills/MCP tools to generate large pieces of work, with human-led QA and eval checkpoints." | VS Code (w/ GitHub Copilot), Cursor, Codex, Claude in IDE, API playgrounds with persistence, … |
 | **SAE L4** <br/>Mostly Automated <br/>🚕🤖 | "In my IDE/ADE/CLI, I operate advanced context, tuned harnesses, and eval suites, using subagents/skills/MCP tools to generate, refine, and QA features end-to-end, with humans handling exceptions rather than execution." | Claude Code CLI, Conductor, GitHub Copilot CLI, LangSmith, LangGraph, Braintrust, Weights & Biases, … |
@@ -192,7 +192,7 @@ The goal of AI as embedded in product design work mirrors the evolution of the a
 
 | E: Explorer ❶→ | P: Practitioner ❷→ | I: Integrator ❸→ | A: Architect ❹→ | S: Steward →❺ |
 | --- | --- | --- | --- | --- |
-| Trying ChatGPT, Midjourney, Firefly for ideas or drafts; outputs are hit-or-miss and heavily rewritten | Using AI daily with saved prompts; consistent structure, tone, and basic quality checks before use | AI embedded across a full task (research → ideation → draft → refine) with sources noted, decisions explained, and manual validation | Shared prompt libraries, review checklists, and example outputs teammates can reuse and trust | Team standards for AI-assisted work (what's allowed, how it's reviewed); mentors others on prompting and judgment; governs usage |
+| Trying ChatGPT, Microsoft Copilot, Midjourney, Firefly for ideas or drafts; outputs are hit-or-miss and heavily rewritten | Using AI daily with saved prompts; consistent structure, tone, and basic quality checks before use | AI embedded across a full task (research → ideation → draft → refine) with sources noted, decisions explained, and manual validation | Shared prompt libraries, review checklists, and example outputs teammates can reuse and trust | Team standards for AI-assisted work (what's allowed, how it's reviewed); mentors others on prompting and judgment; governs usage |
 
 **Architect bonus:** Prompt libraries and examples that let PMs, writers, or engineers produce design-quality drafts that only need light review.
 
