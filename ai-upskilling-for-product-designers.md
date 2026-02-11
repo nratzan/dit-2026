@@ -323,9 +323,9 @@ L0 — craft fundamentals (and they still matter)
 
 With AI:
 L1 — better thinking (and first drafts in minutes)
-L2 — reusable outputs (and prototypes in hours)
-L3 — persistent workflows (and real PRs)
-L4 — autonomous execution (and you scale past yourself)
+L2 — reusable outputs (and non-production prototypes in hours)
+L3 — persistent workflows (and real production PRs)
+L4 — autonomous execution (your work done while you sleep)
 L5 — goal-setting only (and we're not there yet)
 ```
 
@@ -344,3 +344,61 @@ Do you feel a little better now? I hope so! I spent three weekends working on th
 ---
 
 *This framework is part of the [Design in Tech Report 2026](https://schedule.sxsw.com/2026/events/PP1148536). It will be presented at SXSW 2026. Feedback and contributions welcome.*
+
+---
+
+# Appendix: Gameboard Version
+
+## E-P-I-A-S at Each SAE Level
+
+Ah — yes, that’s a really strong visual instinct.
+
+When the **square sits on its own line**, it stops feeling like a checkbox and starts feeling like a **node you pass through**. That reinforces the “draw your path” idea beautifully.
+
+Below is the revised gameboard table where each square is visually separated and leaves clear room for drawing a line across.
+
+---
+
+# Appendix: Gameboard Version
+
+**How to use this board**
+
+Draw a continuous line through the squares that represent your real journey. Move right (maturity) or up/down (autonomy). There is no single correct path.
+
+### SAE L0: Craft fundamentals (and they still matter)
+
+| SAE Level   | Explorer ❶                                 | Practitioner ❷                                  | Integrator ❸                                   | Architect ❹                                        | Steward ❺                                           |
+| ----------- | ------------------------------------------ | ----------------------------------------------- | ---------------------------------------------- | -------------------------------------------------- | --------------------------------------------------- |
+| **🚗💨 L0** | ⬜<br><br>Learning craft basics<br><br><br> | ⬜<br><br>Consistent manual workflow<br><br><br> | ⬜<br><br>Decisions documented + QA<br><br><br> | ⬜<br><br>Reusable templates others use<br><br><br> | ⬜<br><br>Sets craft standards + mentors<br><br><br> |
+
+### SAE L1: Better thinking (and first drafts in minutes)
+
+| SAE Level  | Explorer ❶                                       | Practitioner ❷                                       | Integrator ❸                                  | Architect ❹                                  | Steward ❺                                        |
+| ---------- | ------------------------------------------------ | ---------------------------------------------------- | --------------------------------------------- | -------------------------------------------- | ------------------------------------------------ |
+| **🚗➕ L1** | ⬜<br><br>Trying prompts + generators<br><br><br> | ⬜<br><br>Daily AI usage w/ saved prompts<br><br><br> | ⬜<br><br>AI across full task flow<br><br><br> | ⬜<br><br>Shared prompt libraries<br><br><br> | ⬜<br><br>Defines team AI usage rules<br><br><br> |
+
+### SAE L2: Reusable outputs (and non-production prototypes in hours)
+
+| SAE Level   | Explorer ❶                                | Practitioner ❷                                    | Integrator ❸                                        | Architect ❹                                             | Steward ❺                                               |
+| ----------- | ----------------------------------------- | ------------------------------------------------- | --------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| **🚗🧠 L2** | ⬜<br><br>Testing app builders<br><br><br> | ⬜<br><br>Repeatable component outputs<br><br><br> | ⬜<br><br>Outputs fit tokens/layout/a11y<br><br><br> | ⬜<br><br>Prompt packs + component templates<br><br><br> | ⬜<br><br>Defines safe automation boundaries<br><br><br> |
+
+### SAE L3: Persistent workflows (and real production PRs)
+
+| SAE Level   | Explorer ❶                                        | Practitioner ❷                                      | Integrator ❸                                 | Architect ❹                                       | Steward ❺                                               |
+| ----------- | ------------------------------------------------- | --------------------------------------------------- | -------------------------------------------- | ------------------------------------------------- | ------------------------------------------------------- |
+| **🚗😴 L3** | ⬜<br><br>Learning IDE + context rules<br><br><br> | ⬜<br><br>Multi-step runs w/ checkpoints<br><br><br> | ⬜<br><br>Human-AI approval model<br><br><br> | ⬜<br><br>Shared IDE workflows + evals<br><br><br> | ⬜<br><br>Org standards for context + safety<br><br><br> |
+
+### SAE L4: Autonomous execution (your work done while you sleep)
+
+| SAE Level   | Explorer ❶                                   | Practitioner ❷                                      | Integrator ❸                                          | Architect ❹                                          | Steward ❺                                        |
+| ----------- | -------------------------------------------- | --------------------------------------------------- | ----------------------------------------------------- | ---------------------------------------------------- | ------------------------------------------------ |
+| **🚕🤖 L4** | ⬜<br><br>Testing agent pipelines<br><br><br> | ⬜<br><br>Reliable eval + retry patterns<br><br><br> | ⬜<br><br>Autonomous workflows w/ recovery<br><br><br> | ⬜<br><br>Production agent infrastructure<br><br><br> | ⬜<br><br>Defines autonomy governance<br><br><br> |
+
+### SAE L5 — 🚗✨ Fully Automated (Future)
+
+| SAE Level  | Explorer ❶                                   | Practitioner ❷                                 | Integrator ❸                                   | Architect ❹                                       | Steward ❺                                   |
+| ---------- | -------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ------------------------------------------------- | ------------------------------------------- |
+| **🚗✨ L5** | ⬜<br><br>Exploring goal-based AI<br><br><br> | ⬜<br><br>Consistent approval gates<br><br><br> | ⬜<br><br>Exception-driven autonomy<br><br><br> | ⬜<br><br>Goal frameworks others trust<br><br><br> | ⬜<br><br>Org-wide AI governance<br><br><br> |
+
+---
