@@ -147,7 +147,7 @@ L5 — You own the AI's goals.
 | --- | --- | --- |
 | **SAE L0** <br/>Manual <br/>🚗💨 | "I do my design work without AI; I'm open to using the latest tool, but in general I prefer doing things as manually as possible." | Figma, Sketch (old skool), pen and paper (OG old skool), manual paper prototyping (OG IDEO skool) |
 | **SAE L1** <br/>AI-Assisted <br/>🚗➕ | "I use AI to generate ideas, copy, or visuals, but I direct each step and manually verify and refine everything." | ChatGPT, Microsoft Copilot, Midjourney, Microsoft Copilot, Figma Make, Krea, Adobe Firefly, Canva, DALL-E, Replicate, … |
-| **SAE L2** <br/>Partially Automated <br/>🚗🧠 | "I use AI app-builders and hybrid design↔code canvases to generate bounded chunks (screens, components, flows, or small apps) from clear instructions, then I manually integrate and QA the results." | Lovable, Bolt.new, MagicPath, Pencil.dev (canvas mode), Vercel v0, Framer AI, Komposo, Replit, GitHub Spark, … |
+| **SAE L2** <br/>Partially Automated <br/>🚗🧠 | "I use AI app-builders and hybrid design↔code canvases to generate bounded chunks (screens, components, flows, or small apps) from clear instructions, then I manually integrate and QA the results." | Lovable, Bolt.new, MagicPath, Pencil.dev (canvas mode), Vercel v0, Framer AI, Replit, GitHub Spark, … |
 | **SAE L3** <br/>Guided Automation <br/>🚗😴 | "In my IDE, I run orchestrated, multi-step workflows with context engineering, using subagents/skills/MCP tools to generate large pieces of work, with human-led QA and eval checkpoints." | VS Code (w/ GitHub Copilot), Cursor, Codex, Claude in IDE, API playgrounds with persistence, … |
 | **SAE L4** <br/>Mostly Automated <br/>🚕🤖 | "In my IDE/ADE/CLI, I operate advanced context, tuned harnesses, and eval suites, using subagents/skills/MCP tools to generate, refine, and QA features end-to-end, with humans handling exceptions rather than execution." | Claude Code CLI, Conductor, GitHub Copilot CLI, LangSmith, LangGraph, Braintrust, Weights & Biases, … |
 | **SAE L5** <br/>Full Autonomy <br/>🚗✨ | "AI runs most of the workflow by default and self-corrects; I set the goals, constraints, quality bar, and approval gates, then review outcomes and exceptions." | Aspirational, not yet real |
@@ -210,7 +210,7 @@ The goal of AI as embedded in product design work mirrors the evolution of the a
 
 > AI produces usable pieces, but you assemble and verify.
 
-New hybrid design↔code canvas tools (Lovable, MagicPath, Pencil.dev, v0, Bolt, etc.) live primarily at L2. They generate larger, more integrated UI chunks — sometimes full apps — but responsibility for integration, correctness, and shipping still sits with the human.
+New hybrid design↔code canvas tools (Lovable, MagicPath,  Pencil.dev, v0, Bolt, [YC startups](https://www.ycombinator.com/companies/industry/design-tools), etc.) live primarily at L2. They generate larger, more integrated UI chunks — sometimes full apps — but responsibility for integration, correctness, and shipping still sits with the human.
 
 **Environment:** Assistive + early Workspace (app-builders, component generators)
 
