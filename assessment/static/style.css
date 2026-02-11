@@ -886,13 +886,17 @@ body {
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 2rem 2.5rem;
-    margin-top: 2rem;
-    text-align: center;
+    margin-top: 1rem;
+    text-align: left;
     box-shadow: var(--shadow);
-    overflow-x: hidden;
     word-wrap: break-word;
     overflow-wrap: break-word;
     box-sizing: border-box;
+}
+/* When demo notice is shown, don't force full-height chat container */
+.chat-container:has(.chat-demo-notice) {
+    height: auto;
+    overflow: visible;
 }
 .chat-demo-notice h3 {
     font-size: 1.3rem;
@@ -910,7 +914,7 @@ body {
     padding: 1rem 1.25rem;
     text-align: left;
     overflow-x: auto;
-    margin: 1rem auto;
+    margin: 1rem 0;
     max-width: 500px;
 }
 .chat-demo-notice code {
@@ -919,6 +923,7 @@ body {
 }
 .chat-demo-notice .btn {
     margin-top: 0.5rem;
+    display: inline-block;
 }
 
 /* Heatmap */
@@ -1052,7 +1057,7 @@ body {
     .chat-demo-notice { padding: 1rem; }
     .chat-demo-notice h3 { font-size: 1.1rem; }
     .chat-demo-notice p { font-size: 0.85rem; }
-    .chat-demo-notice pre { padding: 0.6rem; margin: 0.75rem auto; max-width: 100%; font-size: 0.75rem; }
+    .chat-demo-notice pre { padding: 0.6rem; margin: 0.75rem 0; max-width: 100%; font-size: 0.75rem; }
     .chat-demo-notice code { font-size: 0.75rem; }
 
     /* Framework Reader */

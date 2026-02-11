@@ -55,6 +55,13 @@ def heatmap_data():
     return jsonify(get_heatmap_data())
 
 
+@bp.route('/usage')
+def usage_stats():
+    """Return current daily token usage stats."""
+    from usage_tracker import get_usage_stats
+    return jsonify(get_usage_stats())
+
+
 @bp.route('/keys', methods=['GET'])
 def get_keys():
     """Keys are managed via GCP Secret Manager. No runtime key info exposed."""

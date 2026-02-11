@@ -209,6 +209,13 @@
         if (data.provider) parts.push(`Provider: ${data.provider}`);
         if (data.model) parts.push(`Model: ${data.model}`);
         if (data.latency_ms) parts.push(`${Math.round(data.latency_ms)}ms`);
+        if (data.input_tokens && data.output_tokens) {
+            parts.push(`${data.input_tokens}+${data.output_tokens} tok`);
+        }
+        if (data.usage && data.usage.budget) {
+            const pct = Math.round((data.usage.tokens_used / data.usage.budget) * 100);
+            parts.push(`Daily: ${pct}%`);
+        }
         metaEl.textContent = parts.join(' | ');
     }
 

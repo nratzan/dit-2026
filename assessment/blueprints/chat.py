@@ -1,7 +1,26 @@
+import time
+from collections import defaultdict
 from flask import Blueprint, render_template, request, jsonify, current_app
 from llm.models import get_model_info
+from usage_tracker import check_budget, record_usage
 
 bp = Blueprint('chat', __name__, url_prefix='/chat')
+
+# Simple in-memory rate limiter: max 30 messages per IP per hour
+_RATE_LIMIT = 30
+_RATE_WINDOW = 3600  # seconds
+_rate_log: dict[str, list[float]] = defaultdict(list)
+
+
+def _check_rate_limit(ip: str) -> bool:
+    """Return True if under the rate limit."""
+    now = time.time()
+    cutoff = now - _RATE_WINDOW
+    _rate_log[ip] = [t for t in _rate_log[ip] if t > cutoff]
+    if len(_rate_log[ip]) >= _RATE_LIMIT:
+        return False
+    _rate_log[ip].append(now)
+    return True
 
 
 @bp.route('/')
@@ -12,6 +31,10 @@ def chat_page():
 
 @bp.route('/api/message', methods=['POST'])
 def send_message():
+    ip = request.headers.get('X-Forwarded-For', request.remote_addr or '').split(',')[0].strip()
+    if not _check_rate_limit(ip):
+        return jsonify({"error": "Rate limit exceeded. Please try again later."}), 429
+
     data = request.get_json()
     user_message = data['message']
     provider_name = data.get('provider', 'auto')
@@ -49,6 +72,10 @@ def send_message():
             elif param_type == "thinking_level":
                 reasoning_config = {"thinking_level": reasoning_value}
 
+    # Check daily token budget before calling LLM
+    if not check_budget():
+        return jsonify({"error": "Daily token budget reached. Chat will resume tomorrow."}), 503
+
     provider = current_app.llm_registry.get_provider(provider_name)
     response = provider.generate(
         system_prompt=system_prompt,
@@ -57,10 +84,16 @@ def send_message():
         reasoning_config=reasoning_config,
     )
 
+    # Record token usage
+    usage = record_usage(response.input_tokens or 0, response.output_tokens or 0)
+
     return jsonify({
         "response": response.text,
         "provider": response.provider,
         "model": response.model,
         "latency_ms": response.latency_ms,
+        "input_tokens": response.input_tokens,
+        "output_tokens": response.output_tokens,
+        "usage": usage,
         "sources": [{"file": c.get('source_file',''), "section": c.get('section_title','')} for c in chunks],
     })
