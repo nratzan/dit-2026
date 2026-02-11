@@ -54,12 +54,47 @@ def settings():
 
 
 # Ordered list of source documents with short labels
+# Index 0 is the overview tab (rendered from template, not a file)
 _FRAMEWORK_DOCS = [
+    (None, 'Overview'),
     ('ai-upskilling-for-product-designers.md', 'The E-P-I-A-S x SAE Framework'),
     ('ai-upskilling-for-product-designers-L1-to-L2.md', 'L1 to L2 Transition'),
     ('ai-upskilling-for-product-designers-L2-to-L3.md', 'L2 to L3 Transition'),
     ('ai-upskilling-for-product-designers-L3-L4.md', 'L3 to L4 Transition'),
 ]
+
+_OVERVIEW_HTML = """
+<h2>About the E-P-I-A-S &times; SAE Framework</h2>
+<p>From John Maeda's <strong>Design in Tech Report 2026: From UX to AX</strong>, presented at <a href="https://schedule.sxsw.com/2026/events/PP1148536" target="_blank">SXSW 2026</a>. This framework maps AI adoption for product designers along two axes:</p>
+<div class="framework-axes">
+    <div class="axis">
+        <h3>SAE Levels (Automation)</h3>
+        <table class="mini-table">
+            <tr><td><strong>L0</strong></td><td>Manual &mdash; no AI</td></tr>
+            <tr><td><strong>L1</strong></td><td>AI-Assisted &mdash; AI suggests, you decide</td></tr>
+            <tr><td><strong>L2</strong></td><td>Partially Automated &mdash; AI builds chunks</td></tr>
+            <tr><td><strong>L3</strong></td><td>Guided Automation &mdash; IDE-centric workflows</td></tr>
+            <tr><td><strong>L4</strong></td><td>Mostly Automated &mdash; harness-centric</td></tr>
+            <tr><td><strong>L5</strong></td><td>Full Automation &mdash; aspirational</td></tr>
+        </table>
+    </div>
+    <div class="axis">
+        <h3>E-P-I-A-S (Maturity)</h3>
+        <table class="mini-table">
+            <tr><td><strong>E</strong></td><td>Explorer &mdash; trying things, learning basics</td></tr>
+            <tr><td><strong>P</strong></td><td>Practitioner &mdash; consistent habits</td></tr>
+            <tr><td><strong>I</strong></td><td>Integrator &mdash; part of workflow</td></tr>
+            <tr><td><strong>A</strong></td><td>Architect &mdash; systems others use</td></tr>
+            <tr><td><strong>S</strong></td><td>Steward &mdash; setting standards</td></tr>
+        </table>
+    </div>
+</div>
+<blockquote class="key-insight">
+    &ldquo;An S-Steward at L1 is more valuable than an E-Explorer at L4. Depth of judgment beats breadth of tooling.&rdquo;
+    <cite>&mdash; John Maeda, DIT 2026</cite>
+</blockquote>
+<p class="evolving-note">This framework is a living document. The source content may have been updated since this app was built. Check the <a href="https://github.com/aji-ai/dit-2026" target="_blank">GitHub repository</a> for the latest version.</p>
+"""
 
 
 @bp.route('/framework')
@@ -67,9 +102,15 @@ _FRAMEWORK_DOCS = [
 def framework(doc_index=0):
     doc_index = max(0, min(doc_index, len(_FRAMEWORK_DOCS) - 1))
     filename, label = _FRAMEWORK_DOCS[doc_index]
-    filepath = app_settings.source_dir / filename
-    raw_md = filepath.read_text(encoding='utf-8')
-    html_content = _render_markdown(raw_md)
+
+    if filename is None:
+        # Overview tab — rendered from static HTML
+        html_content = _OVERVIEW_HTML
+    else:
+        filepath = app_settings.source_dir / filename
+        raw_md = filepath.read_text(encoding='utf-8')
+        html_content = _render_markdown(raw_md)
+
     tabs = [{'label': lbl, 'index': i, 'active': i == doc_index}
             for i, (_, lbl) in enumerate(_FRAMEWORK_DOCS)]
     return render_template('framework.html', tabs=tabs, content=html_content,
