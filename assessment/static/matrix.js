@@ -41,24 +41,24 @@ function renderMatrix(containerId, placement) {
 
     let html = '<table class="matrix-table">';
 
-    // Header row
+    // Header row — EPIAS stages as columns
     html += '<tr><th></th>';
-    levels.forEach(level => {
-        const label = levelLabels[level].replace(/\n/g, '<br>');
-        const isCurrent = level === currentLevel;
-        html += `<th style="${isCurrent ? 'background: var(--primary-light); color: var(--primary);' : ''}">${label}</th>`;
+    stages.forEach(stage => {
+        const isCurrent = stage === currentStage;
+        html += `<th style="${isCurrent ? 'background: #d1fae5; color: var(--success);' : ''}">
+            ${stageEmojis[stage]} ${stageLabels[stage]}
+        </th>`;
     });
     html += '</tr>';
 
-    // Data rows
-    stages.forEach(stage => {
-        const isStageCurrent = stage === currentStage;
+    // Data rows — SAE levels as rows
+    levels.forEach(level => {
+        const isLevelCurrent = level === currentLevel;
+        const label = levelLabels[level].replace(/\n/g, '<br>');
         html += `<tr>`;
-        html += `<th style="${isStageCurrent ? 'background: #d1fae5; color: var(--success);' : ''}">
-            ${stageEmojis[stage]} ${stageLabels[stage]}
-        </th>`;
+        html += `<th style="${isLevelCurrent ? 'background: var(--primary-light); color: var(--primary);' : ''}">${label}</th>`;
 
-        levels.forEach(level => {
+        stages.forEach(stage => {
             const isCurrent = level === currentLevel && stage === currentStage;
             const isNext = nextStep &&
                 level === nextStep.sae_level &&

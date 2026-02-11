@@ -312,7 +312,11 @@
         ];
     }
 
+    let submitting = false;
+
     async function submitAssessment() {
+        if (submitting) return;
+        submitting = true;
         document.getElementById('epiasStage').style.display = 'none';
         document.getElementById('loadingStage').style.display = 'block';
 
@@ -331,6 +335,7 @@
             window.location.href = '/results';
         } catch (e) {
             console.error('Assessment submission failed:', e);
+            submitting = false;
             document.getElementById('loadingStage').style.display = 'none';
             document.getElementById('epiasStage').style.display = '';
             alert('Failed to submit assessment. Please try again.');

@@ -65,7 +65,7 @@
         card.className = 'chunk-card';
         card.innerHTML = `
             <div class="chunk-source">${escapeHtml(chunk.source || '')} &mdash; ${escapeHtml(chunk.section || '')}</div>
-            <div class="chunk-text">${renderChunkMarkdown((chunk.text || '').substring(0, 800))}</div>
+            <div class="chunk-text">${renderChunkMarkdown(truncateChunk(chunk.text || '', 1200))}</div>
         `;
         chunksContainer.appendChild(card);
     });
@@ -95,6 +95,27 @@
         const div = document.createElement('div');
         div.textContent = text;
         return div.innerHTML;
+    }
+
+    /** Truncate chunk text without breaking tables mid-row. */
+    function truncateChunk(text, limit) {
+        if (text.length <= limit) return text;
+        // Find the last complete line before the limit
+        const cut = text.lastIndexOf('\n', limit);
+        if (cut <= 0) return text.substring(0, limit);
+        const truncated = text.substring(0, cut);
+        // If we're in the middle of a table (last non-empty line starts with |),
+        // back up to before the table started
+        const lines = truncated.split('\n');
+        const lastNonEmpty = lines.filter(l => l.trim()).pop() || '';
+        if (lastNonEmpty.trim().startsWith('|')) {
+            // Find where this table starts and cut before it
+            let tableStart = lines.length - 1;
+            while (tableStart > 0 && lines[tableStart].trim().startsWith('|')) tableStart--;
+            // If there's content before the table, use that
+            if (tableStart > 0) return lines.slice(0, tableStart + 1).join('\n');
+        }
+        return truncated;
     }
 
     /** Turn a markdown chunk into simple HTML. */
