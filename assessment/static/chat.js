@@ -22,6 +22,7 @@
     let conversationHistory = [];
     let isLoading = false;
     let modelCatalog = {};  // {model_id: {provider, label, reasoning_param, ...}}
+    let providerDefaults = {};  // {provider_name: default_model_id}
 
     // ---- Model Catalog ----
 
@@ -56,6 +57,9 @@
                 if (info.description) opt.title = info.description;
                 modelSelect.appendChild(opt);
             });
+            // Select provider's default model
+            const defaultModel = providerDefaults[provider];
+            if (defaultModel) modelSelect.value = defaultModel;
         }
         onModelChange();
     }
@@ -98,8 +102,12 @@
         });
     }
 
-    providerSelect.addEventListener('change', onProviderChange);
-    modelSelect.addEventListener('change', onModelChange);
+    const simpleMode = !providerSelect;
+
+    if (!simpleMode) {
+        providerSelect.addEventListener('change', onProviderChange);
+        modelSelect.addEventListener('change', onModelChange);
+    }
 
     // ---- Message Rendering ----
 
@@ -246,12 +254,12 @@
         // Build request body with model + reasoning
         const body = {
             message: text,
-            provider: providerSelect.value,
-            model: modelSelect.value || undefined,
+            provider: simpleMode ? 'auto' : providerSelect.value,
+            model: simpleMode ? undefined : (modelSelect.value || undefined),
             history: conversationHistory.slice(-10),
         };
         // Include reasoning value if the control is visible
-        if (reasoningGroup.style.display !== 'none' && reasoningSelect.value) {
+        if (!simpleMode && reasoningGroup && reasoningGroup.style.display !== 'none' && reasoningSelect.value) {
             body.reasoning = reasoningSelect.value;
         }
 
@@ -322,6 +330,7 @@
                     if (!p.available) opt.textContent += ' — unavailable';
                     providerSelect.appendChild(opt);
                     if (p.available) hasAvailable = true;
+                    if (p.model) providerDefaults[p.name] = p.model;
                 });
                 // Restore selection if still available
                 if (current) providerSelect.value = current;
@@ -337,10 +346,12 @@
             .catch(() => {});
     }
 
-    // Initialize: load providers, then models
-    refreshProviders();
-    refreshModels();
+    // Initialize: load providers, then models (skip in simple mode)
+    if (!simpleMode) {
+        refreshProviders();
+        refreshModels();
+    }
 
-    inputEl.focus();
+    if (inputEl) inputEl.focus();
 
 })();

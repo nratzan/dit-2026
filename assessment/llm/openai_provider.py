@@ -38,9 +38,10 @@ class OpenAIProvider(LLMProvider):
             {"role": "system", "content": [{"type": "input_text", "text": system_prompt}]},
         ]
         for msg in messages:
+            text_type = "output_text" if msg["role"] == "assistant" else "input_text"
             api_input.append({
                 "role": msg["role"],
-                "content": [{"type": "input_text", "text": msg["content"]}],
+                "content": [{"type": text_type, "text": msg["content"]}],
             })
 
         # Build kwargs

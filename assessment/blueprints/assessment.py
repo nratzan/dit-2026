@@ -56,11 +56,11 @@ def settings():
 # Ordered list of source documents with short labels
 # Index 0 is the overview tab (rendered from template, not a file)
 _FRAMEWORK_DOCS = [
-    (None, 'Overview'),
-    ('ai-upskilling-for-product-designers.md', 'The E-P-I-A-S x SAE Framework'),
-    ('ai-upskilling-for-product-designers-L1-to-L2.md', 'L1 to L2 Transition'),
-    ('ai-upskilling-for-product-designers-L2-to-L3.md', 'L2 to L3 Transition'),
-    ('ai-upskilling-for-product-designers-L3-L4.md', 'L3 to L4 Transition'),
+    (None, 'At a Glance'),
+    ('ai-upskilling-for-product-designers.md', 'Overview'),
+    ('ai-upskilling-for-product-designers-L1-to-L2.md', 'L1 to L2'),
+    ('ai-upskilling-for-product-designers-L2-to-L3.md', 'L2 to L3'),
+    ('ai-upskilling-for-product-designers-L3-L4.md', 'L3 to L4'),
 ]
 
 _OVERVIEW_HTML = """

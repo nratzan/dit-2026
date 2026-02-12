@@ -5,7 +5,7 @@
 <div class="chat-container">
     <div class="chat-header">
         <h2>Chat with the Framework</h2>
-        {% if has_llm %}
+        {% if has_llm and not simple_mode %}
         <div class="model-bar">
             <div class="model-bar-group">
                 <label for="providerSelect">Provider</label>
@@ -28,6 +28,8 @@
                 <select id="reasoningSelect"></select>
             </div>
         </div>
+        {% elif has_llm and simple_mode %}
+        <span class="model-label">Answers by {{ model_label }}</span>
         {% endif %}
     </div>
 

@@ -1,3 +1,4 @@
+import os
 import time
 from collections import defaultdict
 from flask import Blueprint, render_template, request, jsonify, current_app
@@ -26,7 +27,17 @@ def _check_rate_limit(ip: str) -> bool:
 @bp.route('/')
 def chat_page():
     providers = current_app.llm_registry.get_available_providers()
-    return render_template('chat.html', providers=providers)
+    simple = os.environ.get("CHAT_SIMPLE_MODE", "").lower() in ("1", "true")
+    # In simple mode, resolve the display label for the fixed model
+    model_label = None
+    if simple:
+        for p in providers:
+            if p["available"]:
+                info = get_model_info(p["model"])
+                model_label = info["label"] if info else p["model"]
+                break
+    return render_template('chat.html', providers=providers,
+                           simple_mode=simple, model_label=model_label)
 
 
 @bp.route('/api/message', methods=['POST'])
