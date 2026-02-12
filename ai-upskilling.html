@@ -74,6 +74,35 @@ body {
 [data-theme="light"] .sun-icon { display: block; }
 [data-theme="light"] .moon-icon { display: none; }
 
+/* Fixed Expand Button (compact mode only) */
+.fixed-expand-btn {
+  position: fixed;
+  top: 1rem;
+  right: 4rem;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--accent);
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 100;
+}
+.fixed-expand-btn:hover {
+  background: var(--accent-hover);
+}
+.fixed-expand-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: white;
+}
+[data-view="compact"] .fixed-expand-btn {
+  display: flex;
+}
+
 header { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-right: 60px; }
 h1 { font-size: 1.75rem; font-weight: 600; margin-bottom: 0.5rem; }
 h2 { font-size: 1.1rem; font-weight: 500; color: var(--muted); }
@@ -132,6 +161,9 @@ h2 a:hover { text-decoration: underline; }
 .compact-view { display: none; }
 [data-view="compact"] .full-view { display: none; }
 [data-view="compact"] .compact-view { display: block; }
+[data-view="compact"] .instructions { display: none; }
+[data-view="compact"] .share-cta { display: none; }
+[data-view="compact"] .share-reminder { display: none; }
 
 .level-section { margin-bottom: 2rem; }
 .level-header { display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
@@ -541,6 +573,10 @@ footer a:hover { text-decoration: underline; }
   <svg class="moon-icon" viewBox="0 0 24 24"><path d="M9.37 5.51A7.35 7.35 0 0 0 9.1 7.5c0 4.08 3.32 7.4 7.4 7.4.68 0 1.35-.09 1.99-.27A7.014 7.014 0 0 1 12 19c-3.86 0-7-3.14-7-7 0-2.93 1.81-5.45 4.37-6.49zM12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></svg>
 </button>
 
+<button class="fixed-expand-btn" onclick="toggleView()" aria-label="Expand view">
+  <svg viewBox="0 0 24 24"><path d="M21 11V3h-8l3.29 3.29-10 10L3 13v8h8l-3.29-3.29 10-10L21 11z"/></svg>
+</button>
+
 <header>
   <h1>Appendix: SAE × E-P-I-A-S Gameboard</h1>
   <h2>AI Upskilling Framework for Product Designers | <a href="https://github.com/aji-ai/dit-2026/blob/main/ai-upskilling-for-product-designers.md">On GitHub</a></h2>
@@ -567,7 +603,7 @@ footer a:hover { text-decoration: underline; }
 <div class="full-view">
 
 <section class="level-section">
-  <div class="level-header"><h3>SAE L0: 🚗💨 No Automation</h3><span class="tagline">Craft fundamentals (and they still matter)</span></div>
+  <div class="level-header"><h3>CLASSICAL DESIGNER (🚫 AI) | No Automation</h3><span class="tagline">Craft fundamentals (and they still matter)</span></div>
   <div class="scroll-hint">← Swipe to see all levels →</div>
   <div class="table-wrapper">
     <table>
@@ -585,7 +621,7 @@ footer a:hover { text-decoration: underline; }
 </section>
 
 <section class="level-section">
-  <div class="level-header"><h3>SAE L1: 🚗➕ AI-Assisted</h3><span class="tagline">Better thinking (and first drafts in minutes)</span></div>
+  <div class="level-header"><h3>MARKETING DESIGNER × AI </h3><span class="tagline">Better thinking (and draft assets in minutes)</span></div>
   <div class="scroll-hint">← Swipe to see all levels →</div>
   <div class="table-wrapper">
     <table>
@@ -603,7 +639,7 @@ footer a:hover { text-decoration: underline; }
 </section>
 
 <section class="level-section">
-  <div class="level-header"><h3>SAE L2: 🚗🧠 Partial Automation</h3><span class="tagline">Reusable outputs (and non-production prototypes in hours)</span></div>
+  <div class="level-header"><h3>PRODUCT DESIGNER × AI </h3><span class="tagline">Bigger thinking (and non-production prototypes in hours)</span></div>
   <div class="scroll-hint">← Swipe to see all levels →</div>
   <div class="table-wrapper">
     <table>
@@ -621,7 +657,7 @@ footer a:hover { text-decoration: underline; }
 </section>
 
 <section class="level-section">
-  <div class="level-header"><h3>SAE L3: 🚗😴 Guided Automation</h3><span class="tagline">Persistent workflows (and real production PRs)</span></div>
+  <div class="level-header"><h3>DESIGN ENGINEER × AI</h3><span class="tagline">Persistent workflows (and real production PRs)</span></div>
   <div class="scroll-hint">← Swipe to see all levels →</div>
   <div class="table-wrapper">
     <table>
@@ -639,7 +675,7 @@ footer a:hover { text-decoration: underline; }
 </section>
 
 <section class="level-section">
-  <div class="level-header"><h3>SAE L4: 🚕🤖 Mostly Automated</h3><span class="tagline">Autonomous execution (your work done while you sleep)</span></div>
+  <div class="level-header"><h3>SUPER DESIGN ENGINEER × AI</h3><span class="tagline">Autonomous execution (your work done while you sleep)</span></div>
   <div class="scroll-hint">← Swipe to see all levels →</div>
   <div class="table-wrapper">
     <table>
@@ -657,7 +693,7 @@ footer a:hover { text-decoration: underline; }
 </section>
 
 <section class="level-section">
-  <div class="level-header"><h3>SAE L5: 🚗✨ Full Automation</h3><span class="tagline">Goal-setting only (and we're not there yet)</span></div>
+  <div class="level-header"><h3>AI × AI</h3><span class="tagline">Goal-setting only (and we're not there yet)</span></div>
   <div class="scroll-hint">← Swipe to see all levels →</div>
   <div class="table-wrapper">
     <table>
@@ -693,7 +729,7 @@ footer a:hover { text-decoration: underline; }
       </thead>
       <tbody>
         <tr>
-          <td><div class="level-cell-compact"><span class="level-name">🚗💨 L0 Manual</span><span class="level-tagline">Craft fundamentals</span><span class="info-icon" data-level="L0" role="button" tabindex="0">i</span></div></td>
+          <td><div class="level-cell-compact"><span class="level-name">CLASSICAL<BR />DESIGNER</span><span class="level-tagline">Craft fundamentals</span><span class="info-icon" data-level="L0" role="button" tabindex="0">i</span></div></td>
           <td><div class="cell-content"><div class="checkbox" data-cell="0-0"></div><span class="cell-label">Learning craft basics</span></div></td>
           <td><div class="cell-content"><div class="checkbox" data-cell="0-1"></div><span class="cell-label">Consistent manual workflow</span></div></td>
           <td><div class="cell-content"><div class="checkbox" data-cell="0-2"></div><span class="cell-label">Decisions documented + QA</span></div></td>
@@ -701,7 +737,7 @@ footer a:hover { text-decoration: underline; }
           <td><div class="cell-content"><div class="checkbox" data-cell="0-4"></div><span class="cell-label">Sets craft standards + mentors</span></div></td>
         </tr>
         <tr>
-          <td><div class="level-cell-compact"><span class="level-name">🚗➕ L1 Assisted</span><span class="level-tagline">Better thinking</span><span class="info-icon" data-level="L1" role="button" tabindex="0">i</span></div></td>
+          <td><div class="level-cell-compact"><span class="level-name">MARKETING<BR />DESIGNER × AI</span><span class="level-tagline">Better thinking</span><span class="info-icon" data-level="L1" role="button" tabindex="0">i</span></div></td>
           <td><div class="cell-content"><div class="checkbox" data-cell="1-0"></div><span class="cell-label">Trying prompts + generators</span></div></td>
           <td><div class="cell-content"><div class="checkbox" data-cell="1-1"></div><span class="cell-label">Daily AI w/ saved prompts</span></div></td>
           <td><div class="cell-content"><div class="checkbox" data-cell="1-2"></div><span class="cell-label">AI across full task flow</span></div></td>
@@ -709,7 +745,7 @@ footer a:hover { text-decoration: underline; }
           <td><div class="cell-content"><div class="checkbox" data-cell="1-4"></div><span class="cell-label">Defines team AI rules</span></div></td>
         </tr>
         <tr>
-          <td><div class="level-cell-compact"><span class="level-name">🚗🧠 L2 Partial</span><span class="level-tagline">Reusable outputs</span><span class="info-icon" data-level="L2" role="button" tabindex="0">i</span></div></td>
+          <td><div class="level-cell-compact"><span class="level-name">PRODUCT<BR/>DESIGNER × AI</span><span class="level-tagline">Reusable outputs</span><span class="info-icon" data-level="L2" role="button" tabindex="0">i</span></div></td>
           <td><div class="cell-content"><div class="checkbox" data-cell="2-0"></div><span class="cell-label">Testing app builders</span></div></td>
           <td><div class="cell-content"><div class="checkbox" data-cell="2-1"></div><span class="cell-label">Repeatable components</span></div></td>
           <td><div class="cell-content"><div class="checkbox" data-cell="2-2"></div><span class="cell-label">Fits tokens/layout/a11y</span></div></td>
@@ -717,7 +753,7 @@ footer a:hover { text-decoration: underline; }
           <td><div class="cell-content"><div class="checkbox" data-cell="2-4"></div><span class="cell-label">Safe automation bounds</span></div></td>
         </tr>
         <tr>
-          <td><div class="level-cell-compact"><span class="level-name">🚗😴 L3 Guided</span><span class="level-tagline">Persistent workflows</span><span class="info-icon" data-level="L3" role="button" tabindex="0">i</span></div></td>
+          <td><div class="level-cell-compact"><span class="level-name">DESIGN<br/>ENGINEER × AI</span><span class="level-tagline">Persistent workflows</span><span class="info-icon" data-level="L3" role="button" tabindex="0">i</span></div></td>
           <td><div class="cell-content"><div class="checkbox" data-cell="3-0"></div><span class="cell-label">Learning IDE + context</span></div></td>
           <td><div class="cell-content"><div class="checkbox" data-cell="3-1"></div><span class="cell-label">Multi-step + checkpoints</span></div></td>
           <td><div class="cell-content"><div class="checkbox" data-cell="3-2"></div><span class="cell-label">Human-AI approval</span></div></td>
@@ -725,7 +761,7 @@ footer a:hover { text-decoration: underline; }
           <td><div class="cell-content"><div class="checkbox" data-cell="3-4"></div><span class="cell-label">Org context + safety</span></div></td>
         </tr>
         <tr>
-          <td><div class="level-cell-compact"><span class="level-name">🚕🤖 L4 Mostly</span><span class="level-tagline">Autonomous execution</span><span class="info-icon" data-level="L4" role="button" tabindex="0">i</span></div></td>
+          <td><div class="level-cell-compact"><span class="level-name">SUPER DESIGN<Br/>ENGINEER × AI</span><span class="level-tagline">Autonomous execution</span><span class="info-icon" data-level="L4" role="button" tabindex="0">i</span></div></td>
           <td><div class="cell-content"><div class="checkbox" data-cell="4-0"></div><span class="cell-label">Testing agent pipelines</span></div></td>
           <td><div class="cell-content"><div class="checkbox" data-cell="4-1"></div><span class="cell-label">Reliable eval + retry</span></div></td>
           <td><div class="cell-content"><div class="checkbox" data-cell="4-2"></div><span class="cell-label">Autonomous + recovery</span></div></td>
@@ -733,7 +769,7 @@ footer a:hover { text-decoration: underline; }
           <td><div class="cell-content"><div class="checkbox" data-cell="4-4"></div><span class="cell-label">Autonomy governance</span></div></td>
         </tr>
         <tr>
-          <td><div class="level-cell-compact"><span class="level-name">🚗✨ L5 Full</span><span class="level-tagline">Goal-setting only</span><span class="info-icon" data-level="L5" role="button" tabindex="0">i</span></div></td>
+          <td><div class="level-cell-compact"><span class="level-name">AI × AI<br />SINGULARITY</span><span class="level-tagline">Goal-setting only</span><span class="info-icon" data-level="L5" role="button" tabindex="0">i</span></div></td>
           <td><div class="cell-content"><div class="checkbox" data-cell="5-0"></div><span class="cell-label">Exploring goal-based AI</span></div></td>
           <td><div class="cell-content"><div class="checkbox" data-cell="5-1"></div><span class="cell-label">Consistent approval gates</span></div></td>
           <td><div class="cell-content"><div class="checkbox" data-cell="5-2"></div><span class="cell-label">Exception-driven</span></div></td>
