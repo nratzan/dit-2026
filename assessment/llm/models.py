@@ -18,18 +18,16 @@ MODEL_CATALOG = {
         "reasoning_options": ["none", "low", "medium", "high"],
         "reasoning_default": "high",
     },
-    "gpt-5.1-mini": {
-        "provider": "openai",
-        "label": "GPT-5.1 Mini",
-        "description": "Fast and affordable",
-        "reasoning_param": "effort",
-        "reasoning_options": ["none", "low", "medium", "high"],
-        "reasoning_default": "medium",
-    },
     "gpt-4.1": {
         "provider": "openai",
         "label": "GPT-4.1",
         "description": "Coding and instruction specialist",
+        "reasoning_param": None,
+    },
+    "gpt-4.1-mini": {
+        "provider": "openai",
+        "label": "GPT-4.1 Mini",
+        "description": "Fast and affordable",
         "reasoning_param": None,
     },
     "o3": {
