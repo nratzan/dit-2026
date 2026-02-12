@@ -30,6 +30,14 @@ MODEL_CATALOG = {
         "description": "Fast and affordable",
         "reasoning_param": None,
     },
+    "gpt-5-mini": {
+        "provider": "openai",
+        "label": "GPT-5 Mini",
+        "description": "Fast GPT-5 class model",
+        "reasoning_param": "effort",
+        "reasoning_options": ["none", "low", "medium", "high"],
+        "reasoning_default": "medium",
+    },
     "o3": {
         "provider": "openai",
         "label": "o3",

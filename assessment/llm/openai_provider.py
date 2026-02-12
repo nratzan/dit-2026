@@ -4,7 +4,7 @@ import time
 from llm.base import LLMProvider, LLMResponse
 from llm.models import get_model_info
 
-DEFAULT_MODEL = "gpt-4.1-mini"
+DEFAULT_MODEL = "gpt-5-mini"
 
 
 class OpenAIProvider(LLMProvider):
